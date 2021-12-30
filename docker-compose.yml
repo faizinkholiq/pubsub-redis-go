@@ -1,0 +1,28 @@
+version: "3.7"
+
+networks:
+  internal:
+    external: false
+
+services:
+  # golang
+  pubsub_go:
+    container_name: pubsub_go
+    build:
+      context: ./pub
+      dockerfile: ../docker/pub_go/Dockerfile
+    restart: "no"
+    ports:
+      - "127.0.0.1:8080:3000"
+    networks:
+      - internal
+
+  #redis
+  pubsub_redis:
+    container_name: pubsub_redis
+    image: redis:latest
+    restart: always
+    environment: 
+      - REDIS_DATABASES=1
+    networks: 
+      - internal
