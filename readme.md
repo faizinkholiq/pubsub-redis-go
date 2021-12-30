@@ -1,2 +1,2 @@
-Pub: Message Publisher
-Sub: Receiver
+- Pub: Message Publisher
+- Sub: Receiver
